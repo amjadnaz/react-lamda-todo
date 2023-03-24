@@ -25,32 +25,32 @@ function App() {
 
   return (
     <StyledTodo>
-        <h1 className="app-header">TO DO LIST</h1>
-        <div className="add-task">
-          <input
-            type="text"
-            value={todo}
-            autoComplete="off"
-            placeholder="Add New Task"
-            onChange={e => setTodo(e.target.value)}
-            onKeyDown={e => onEnter(e.key)}
-            className="task-input"
+      <h1 className="app-header">GLOBAL TO DO LIST</h1>
+      <div className="add-task">
+        <input
+          type="text"
+          value={todo}
+          autoComplete="off"
+          placeholder="Add New Task"
+          onChange={e => setTodo(e.target.value)}
+          onKeyDown={e => onEnter(e.key)}
+          className="task-input"
+        />
+        <button
+          type="submit"
+          onClick={createTodo}
+          className="submit-task"
+          title="Add Task"
+        />
+      </div>
+      <ul className="task-list">
+        {todos?.map(todo => (
+          <Todo
+            todo={todo}
+            key={todo.id}
           />
-          <button
-            type="submit"
-            onClick={createTodo}
-            className="submit-task"
-            title="Add Task"
-          />
-        </div>
-        <ul className="task-list">
-          {todos?.map(todo => (
-            <Todo
-              todo={todo}
-              key={todo.id}
-            />
-          ))}
-        </ul>
+        ))}
+      </ul>
     </StyledTodo>
   )
 }
